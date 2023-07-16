@@ -13,8 +13,8 @@ namespace R5T.Z0030
         private static Raw.IClassIdentityNames RawClassIdentityNames => Raw.ClassIdentityNames.Instance;
 
 
-        public TypeIdentityName BasicClass => RawClassIdentityNames.Class01;
-        public TypeIdentityName GenericClass => RawClassIdentityNames.Class01;
+        public ITypeIdentityName BasicClass => RawClassIdentityNames.Class01;
+        public ITypeIdentityName GenericClass => RawClassIdentityNames.Class01;
     }
 }
 
@@ -24,7 +24,7 @@ namespace R5T.Z0030.Raw
     [ValuesMarker]
     public partial interface IClassIdentityNames : IValuesMarker
     {
-        public TypeIdentityName Class01 => "T:Namespace01.Namespace02.Class01".ToTypeIdentityName();
-        public TypeIdentityName Class02 => "T:Namespace01.Namespace02.Class02`1".ToTypeIdentityName();
+        public ITypeIdentityName Class01 => "T:Namespace01.Namespace02.Class01".ToTypeIdentityName();
+        public ITypeIdentityName Class02 => "T:Namespace01.Namespace02.Class02`1".ToTypeIdentityName();
     }
 }

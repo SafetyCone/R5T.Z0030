@@ -13,7 +13,7 @@ namespace R5T.Z0030
         private static Raw.ITypeIdentityNames RawTypeIdentityNames => Raw.TypeIdentityNames.Instance;
 
 
-        public TypeIdentityName BasicType => RawTypeIdentityNames.Type01;
+        public ITypeIdentityName BasicType => RawTypeIdentityNames.Type01;
 
         /// <summary>
         /// It is impossible to directly specify a closed generic type in documentation.
@@ -36,7 +36,7 @@ namespace R5T.Z0030
         /// The <see cref="ObsoleteAttribute"/> is used to indicate there is a problem if an attempt is made to use this value. (Obsolete was used because an "ErrorAttribute" does not exist).
         /// </remarks>
         [Obsolete]
-        public TypeIdentityName ClosedGeneric_Direct => throw new NotImplementedException();
+        public ITypeIdentityName ClosedGeneric_Direct => throw new NotImplementedException();
 
         /// <summary>
         /// It <em>is</em> possible to indirectly specify a closed generic type in documentation.
@@ -53,14 +53,14 @@ namespace R5T.Z0030
         /// </summary>
         /// <inheritdoc cref="ClosedGeneric_Direct" path="/remarks"/>
         [Obsolete]
-        public TypeIdentityName ClosedGeneric_Indirect => throw new NotImplementedException();
+        public ITypeIdentityName ClosedGeneric_Indirect => throw new NotImplementedException();
 
         /// <summary>
         /// Given the impossibility of directly specifying a closed generic type identity name (see <see cref="ClosedGeneric_Direct">ClosedGeneric_Direct</see>),
         /// but the output produced by an indirect specification (see <see cref="ClosedGeneric_Indirect">ClosedGeneric_Indirect</see>),
         /// it is possible to infer what the type identity name of a closed generic type is.
         /// </summary>
-        public TypeIdentityName ClosedGeneric_Inferred => RawTypeIdentityNames.System_Collections_Generic_ListOfString;
+        public ITypeIdentityName ClosedGeneric_Inferred => RawTypeIdentityNames.System_Collections_Generic_ListOfString;
 
         /// <summary>
         /// The type name of a closed generic type, like List&lt;T&gt;.
@@ -68,15 +68,15 @@ namespace R5T.Z0030
         /// Note: see the discussion about how the type name of a closed generic is inferred here: <see cref="ClosedGeneric_Inferred">ClosedGeneric_Inferred</see>.
         /// </para>
         /// </summary>
-        public TypeIdentityName ClosedGeneric => this.ClosedGeneric_Inferred;
+        public ITypeIdentityName ClosedGeneric => this.ClosedGeneric_Inferred;
 
-        public TypeIdentityName OpenGeneric => RawTypeIdentityNames.Type02;
+        public ITypeIdentityName OpenGeneric => RawTypeIdentityNames.Type02;
 
-        public TypeIdentityName Generic => this.OpenGeneric;
+        public ITypeIdentityName Generic => this.OpenGeneric;
 
-        public TypeIdentityName Generic_WithOneTypeParameter => this.Generic;
+        public ITypeIdentityName Generic_WithOneTypeParameter => this.Generic;
 
-        public TypeIdentityName Generic_WithTwoTypeParameters => RawTypeIdentityNames.Type03;
+        public ITypeIdentityName Generic_WithTwoTypeParameters => RawTypeIdentityNames.Type03;
     }
 }
 
@@ -92,21 +92,21 @@ namespace R5T.Z0030.Raw
         /// Note: see the discussion about how the type name of a closed generic is inferred here: <see cref="Z0030.ITypeIdentityNames.ClosedGeneric_Inferred">ClosedGeneric_Inferred</see>.
         /// </para>
         /// </summary>
-        public TypeIdentityName System_Collections_Generic_ListOfString => "T:System.Collections.Generic.List{string}".ToTypeIdentityName();
+        public ITypeIdentityName System_Collections_Generic_ListOfString => "T:System.Collections.Generic.List{string}".ToTypeIdentityName();
 
         /// <summary>
         /// A basic type in a namespace.
         /// </summary>
-        public TypeIdentityName Type01 => "T:Namespace01.Namespace02.Type01".ToTypeIdentityName();
+        public ITypeIdentityName Type01 => "T:Namespace01.Namespace02.Type01".ToTypeIdentityName();
 
         /// <summary>
         /// An open generic type in a namespace with a single type parameter.
         /// </summary>
-        public TypeIdentityName Type02 => "T:Namespace01.Namespace02.Type02`1".ToTypeIdentityName();
+        public ITypeIdentityName Type02 => "T:Namespace01.Namespace02.Type02`1".ToTypeIdentityName();
 
         /// <summary>
         /// An open generic type in a namespace with two type parameters.
         /// </summary>
-        public TypeIdentityName Type03 => "T:Namespace01.Namespace02.Type03`2".ToTypeIdentityName();
+        public ITypeIdentityName Type03 => "T:Namespace01.Namespace02.Type03`2".ToTypeIdentityName();
     }
 }
