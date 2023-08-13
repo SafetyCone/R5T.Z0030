@@ -10,11 +10,11 @@ namespace R5T.Z0030
     [ValuesMarker]
     public partial interface IClassIdentityNames : IValuesMarker
     {
-        private static Raw.IClassIdentityNames RawClassIdentityNames => Raw.ClassIdentityNames.Instance;
+        private static Raw.IClassIdentityNames Raw => Z0030.Raw.ClassIdentityNames.Instance;
 
 
-        public ITypeIdentityName BasicClass => RawClassIdentityNames.Class01;
-        public ITypeIdentityName GenericClass => RawClassIdentityNames.Class01;
+        public ITypeIdentityName BasicClass => Raw.Class01;
+        public ITypeIdentityName GenericClass => Raw.Class01;
     }
 }
 

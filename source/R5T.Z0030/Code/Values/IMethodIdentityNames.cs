@@ -10,16 +10,16 @@ namespace R5T.Z0030
     [ValuesMarker]
     public partial interface IMethodIdentityNames : IValuesMarker
     {
-        private static Raw.IMethodIdentityNames RawMethodIdentityNames => Raw.MethodIdentityNames.Instance;
+        private static Raw.IMethodIdentityNames Raw => Z0030.Raw.MethodIdentityNames.Instance;
 
 
-        public IMethodIdentityName BasicMethod => RawMethodIdentityNames.Method001;
+        public IMethodIdentityName BasicMethod => Raw.Method001;
 
-        public IMethodIdentityName BasicMethod_OnGenericType => RawMethodIdentityNames.Method103;
+        public IMethodIdentityName BasicMethod_OnGenericType => Raw.Method103;
 
-        public IMethodIdentityName GenericMethod => RawMethodIdentityNames.Method003;
+        public IMethodIdentityName GenericMethod => Raw.Method003;
 
-        public IMethodIdentityName GenericMethod_OnGenericType => RawMethodIdentityNames.Method206;
+        public IMethodIdentityName GenericMethod_OnGenericType => Raw.Method206;
     }
 }
 
@@ -43,6 +43,17 @@ namespace R5T.Z0030.Raw
         /// A basic method on a generic type, taking an argument of the type's generic type.
         /// </summary>
         public IMethodIdentityName Method103 => "M:R5T.T0140.ExampleMethods`1.Method103(`0)".ToMethodIdentityName();
+
+        /// <summary>
+        /// <para>"M:Microsoft.AspNetCore.Http.Features.FeatureReferences`1.Fetch``1(``0@,System.Func{Microsoft.AspNetCore.Http.Features.IFeatureCollection,``0})"</para>
+        /// A generic method on a generic type, with a ref parameter and a generic parameter.
+        /// </summary>
+        public IMethodIdentityName N_004 => "M:Microsoft.AspNetCore.Http.Features.FeatureReferences`1.Fetch``1(``0@,System.Func{Microsoft.AspNetCore.Http.Features.IFeatureCollection,``0})".ToMethodIdentityName();
+
+        /// <summary>
+        /// <para>"M:AnyOneOne.Database.IServiceActionExtensions.AddAnomalyEventRepositoryAction``1(R5T.T0062.IServiceAction)"</para>
+        /// </summary>
+        public IMethodIdentityName N_005 => "M:AnyOneOne.Database.IServiceActionExtensions.AddAnomalyEventRepositoryAction``1(R5T.T0062.IServiceAction)".ToMethodIdentityName();
 
         /// <summary>
         /// A generic method on a generic type, taking arguments of both the type's and the method's generic type, and a string.
