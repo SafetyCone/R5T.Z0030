@@ -1,6 +1,7 @@
 using System;
 
 using R5T.T0131;
+using R5T.T0143;
 using R5T.T0162;
 using R5T.T0162.Extensions;
 
@@ -10,11 +11,16 @@ namespace R5T.Z0030
     [ValuesMarker]
     public partial interface IClassIdentityNames : IValuesMarker
     {
-        private static Raw.IClassIdentityNames Raw => Z0030.Raw.ClassIdentityNames.Instance;
+#pragma warning disable IDE1006 // Naming Styles
+
+        [Ignore]
+        public Raw.IClassIdentityNames _Raw => Raw.ClassIdentityNames.Instance;
+
+#pragma warning restore IDE1006 // Naming Styles
 
 
-        public ITypeIdentityName BasicClass => Raw.Class01;
-        public ITypeIdentityName GenericClass => Raw.Class01;
+        public ITypeIdentityName BasicClass => _Raw.Class01;
+        public ITypeIdentityName GenericClass => _Raw.Class01;
     }
 }
 

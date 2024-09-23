@@ -1,6 +1,7 @@
 using System;
 
 using R5T.T0131;
+using R5T.T0143;
 using R5T.T0162;
 
 
@@ -9,12 +10,17 @@ namespace R5T.Z0030
     [ValuesMarker]
     public partial interface IIdentityNames : IValuesMarker
     {
-        private static Raw.IIdentityNames Raw => Z0030.Raw.IdentityNames.Instance;
+#pragma warning disable IDE1006 // Naming Styles
+
+        [Ignore]
+        public Raw.IIdentityNames _Raw => Raw.IdentityNames.Instance;
+
+#pragma warning restore IDE1006 // Naming Styles
 
 
         public IIdentityName Basic => Instances.TypeIdentityNames.BasicType;
 
-        public IError Error_Basic => Raw.Error01;
+        public IError Error_Basic => _Raw.Error01;
 
         public ITypeIdentityName Type_Basic => TypeIdentityNames.Instance.BasicType;
         public ITypeIdentityName Type_ClosedGeneric => TypeIdentityNames.Instance.ClosedGeneric;

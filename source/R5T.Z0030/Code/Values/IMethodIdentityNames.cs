@@ -1,6 +1,7 @@
 using System;
 
 using R5T.T0131;
+using R5T.T0143;
 using R5T.T0162;
 using R5T.T0162.Extensions;
 
@@ -10,16 +11,21 @@ namespace R5T.Z0030
     [ValuesMarker]
     public partial interface IMethodIdentityNames : IValuesMarker
     {
-        private static Raw.IMethodIdentityNames Raw => Z0030.Raw.MethodIdentityNames.Instance;
+#pragma warning disable IDE1006 // Naming Styles
+
+        [Ignore]
+        public Raw.IMethodIdentityNames _Raw => Raw.MethodIdentityNames.Instance;
+
+#pragma warning restore IDE1006 // Naming Styles
 
 
-        public IMethodIdentityName BasicMethod => Raw.Method001;
+        public IMethodIdentityName BasicMethod => _Raw.Method001;
 
-        public IMethodIdentityName BasicMethod_OnGenericType => Raw.Method103;
+        public IMethodIdentityName BasicMethod_OnGenericType => _Raw.Method103;
 
-        public IMethodIdentityName GenericMethod => Raw.Method003;
+        public IMethodIdentityName GenericMethod => _Raw.Method003;
 
-        public IMethodIdentityName GenericMethod_OnGenericType => Raw.Method206;
+        public IMethodIdentityName GenericMethod_OnGenericType => _Raw.Method206;
     }
 }
 

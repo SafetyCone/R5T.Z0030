@@ -1,6 +1,7 @@
 using System;
 
 using R5T.T0131;
+using R5T.T0143;
 using R5T.T0162;
 using R5T.T0162.Extensions;
 
@@ -10,10 +11,15 @@ namespace R5T.Z0030
     [ValuesMarker]
     public partial interface ITypeIdentityNames : IValuesMarker
     {
-        private static Raw.ITypeIdentityNames Raw => Z0030.Raw.TypeIdentityNames.Instance;
+#pragma warning disable IDE1006 // Naming Styles
+
+        [Ignore]
+        public Raw.ITypeIdentityNames _Raw => Raw.TypeIdentityNames.Instance;
+
+#pragma warning restore IDE1006 // Naming Styles
 
 
-        public ITypeIdentityName BasicType => Raw.Type01;
+        public ITypeIdentityName BasicType => _Raw.Type01;
 
         /// <summary>
         /// It is impossible to directly specify a closed generic type in documentation.
@@ -60,7 +66,7 @@ namespace R5T.Z0030
         /// but the output produced by an indirect specification (see <see cref="ClosedGeneric_Indirect">ClosedGeneric_Indirect</see>),
         /// it is possible to infer what the type identity name of a closed generic type is.
         /// </summary>
-        public ITypeIdentityName ClosedGeneric_Inferred => Raw.System_Collections_Generic_ListOfString;
+        public ITypeIdentityName ClosedGeneric_Inferred => _Raw.System_Collections_Generic_ListOfString;
 
         /// <summary>
         /// The type name of a closed generic type, like List&lt;T&gt;.
@@ -70,13 +76,13 @@ namespace R5T.Z0030
         /// </summary>
         public ITypeIdentityName ClosedGeneric => this.ClosedGeneric_Inferred;
 
-        public ITypeIdentityName OpenGeneric => Raw.Type02;
+        public ITypeIdentityName OpenGeneric => _Raw.Type02;
 
         public ITypeIdentityName Generic => this.OpenGeneric;
 
         public ITypeIdentityName Generic_WithOneTypeParameter => this.Generic;
 
-        public ITypeIdentityName Generic_WithTwoTypeParameters => Raw.Type03;
+        public ITypeIdentityName Generic_WithTwoTypeParameters => _Raw.Type03;
     }
 }
 
